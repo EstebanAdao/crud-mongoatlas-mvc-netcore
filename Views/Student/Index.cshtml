@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Crud_MVC_MongoDB.Models.Student>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<form asp-action="Index" method="post" class="navbar-form navbar-left" role="search" > 
+			<div class="form-inline">
+				<div class="form-inline">
+					<label for="firstName">@Html.DisplayNameFor(model => model.firstName)</label>
+					<input type="text" class="form-control" name="firstName" value=@ViewData["firstName"]>
+				</div>
+				<div class="form-inline">
+					<label for="lastName">@Html.DisplayNameFor(model => model.lastName)</label>
+					<input type="text" class="form-control" name="lastName" value=@ViewData["lastName"]>
+				</div>
+				<div class="form-inline">
+					<label for="maxDate">@Html.DisplayNameFor(model => model.emailAddress)</label>
+					<input type="text" class="form-control" name="emailAddress" value=@ViewData["emailAddress"]>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Filter</button>
+		</form>
+	</div>
+</nav>
+<hr />
+<p>
+	<a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.firstName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.lastName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.emailAddress)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.firstName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.lastName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.emailAddress)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id = item._id }) |
+					@Html.ActionLink("Details", "Details", new { id = item._id }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item._id })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
